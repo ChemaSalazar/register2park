@@ -1,4 +1,4 @@
-# Register2Park Selenium-Python Script
+# Register2Park Selenium-Python Automation Script
 
 I created this script to make it convenient for me to submit
 visitor parking requests, it's not a big deal to have to do it manually,
