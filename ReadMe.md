@@ -23,7 +23,7 @@ That being said, please use it responsibly.
   - file must be in `.txt` format
   - The structure **MUST** be as follows (separated by newlines):
     - propery name
-    - property radio button value
+    - property radio button value (This can be found by inspecting the value of the option after submitting the property name)
     - apartment number
     - vehicle make
     - vehicle model
