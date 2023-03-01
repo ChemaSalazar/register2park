@@ -28,6 +28,7 @@ That being said, please use it responsibly.
     - vehicle make
     - vehicle model
     - vehicle license plates
+    - email address (used for confirmation email)
   
 ## Usage
 make sure you have at least one profile text file in your `profiles/`
