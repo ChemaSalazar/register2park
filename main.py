@@ -25,12 +25,23 @@ PREVENT_SUBMIT = True
 # @click.option('--test', prompt='Prevent submit?', default=True,
 #               help='This flag is created for testing before submitting the form to their server')
 def runProfile(profile):
-    click.echo(f"your are loading profile: {profile}")
+    click.echo(f"your are loading profile: {profile} \n")
     file1 = open("profiles/" + profile + ".txt", "r")
     profile_data = file1.readlines()
     file1.close()
-    print(len(profile_data))
+    # print(len(profile_data))
     if len(profile_data) != 7:
+        print(f"Your profile file has an incorrect number of entries. We found {len(profile_data)} when we expected 7.")
+        print(f"We found the following fields {profile_data}.\n")
+        print('Your file should have the following fields: ')
+        print('Property Name')
+        print('Property Value')
+        print('Apartment Number')
+        print('Vehicle Make')
+        print('Vehicle Number')
+        print('Vehicle Plates')
+        print('Email\n')
+        print('Please enter the required number of fields and re-run the script. :)\n')
         exit()
     else:
 
