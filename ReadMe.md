@@ -18,6 +18,8 @@ That being said, please use it responsibly.
 - Python 3+
 
 ### Files/Directories
+- `main.py` script that executes automated processes.
+- `methods.py` contains most functions necessary to run the script.
 - Required `profiles/` directory (this folder is excluded to prevent sensitive information to be published.)
   - this folder will hold your profiles in order for the script to run.
 - At least one profile file inside profiles/
