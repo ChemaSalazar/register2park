@@ -1,19 +1,7 @@
 import click
-# selenium
 import time
-
-# import webdriver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-
-global profile_name
-global propName
-global propRadioVal
-global aptNum
-global vehMake
-global vehModl
-global vehPlts
-global profEmail
 
 global PREVENT_SUBMIT
 PREVENT_SUBMIT = True
@@ -31,37 +19,13 @@ def runProfile(profile):
     file1.close()
     # print(len(profile_data))
     if len(profile_data) != 7:
-        print(f"Your profile file has an incorrect number of entries. We found {len(profile_data)} when we expected 7.")
-        print(f"We found the following fields {profile_data}.\n")
-        print('Your file should have the following fields: ')
-        print('Property Name')
-        print('Property Value')
-        print('Apartment Number')
-        print('Vehicle Make')
-        print('Vehicle Number')
-        print('Vehicle Plates')
-        print('Email\n')
-        print('Please enter the required number of fields and re-run the script. :)\n')
+        usageMsg(profile_data)
         exit()
     else:
 
-        propName = profile_data[0].strip()
-        propRadioVal = profile_data[1].strip()
-        aptNum = profile_data[2].strip()
-        vehMake = profile_data[3].strip()
-        vehModl = profile_data[4].strip()
-        vehPlts = profile_data[5].strip()
-        profEmail = profile_data[6].strip()
+        setData(profile_data)
+        showData()
 
-        print("++++++Summary of variables++++++")
-        print("propName => " + propName)
-        print("propRadioVal => " + propRadioVal)
-        print("aptNum => " + aptNum)
-        print("vehMake => " + vehMake)
-        print("vehModl => " + vehModl)
-        print("vehPlts => " + vehPlts)
-        print("profEmail => " + profEmail)
-        print("++++++++++++++++++++++++++++++++")
 
         # Setup webdriver on Chrome
         options = webdriver.ChromeOptions()
@@ -132,5 +96,46 @@ def runProfile(profile):
 
             time.sleep(4)
 
+def setData(profile_data):
+    global propName
+    global propRadioVal
+    global aptNum
+    global vehMake
+    global vehModl
+    global vehPlts
+    global profEmail 
+
+    propName = profile_data[0].strip()
+    propRadioVal = profile_data[1].strip()
+    aptNum = profile_data[2].strip()
+    vehMake = profile_data[3].strip()
+    vehModl = profile_data[4].strip()
+    vehPlts = profile_data[5].strip()
+    profEmail = profile_data[6].strip()
+
+
+def usageMsg(profile_data):
+    print(f"Your profile file has an incorrect number of entries. We found {len(profile_data)} when we expected 7.")
+    print(f"We found the following fields {profile_data}.\n")
+    print('Your file should have the following fields: ')
+    print('Property Name')
+    print('Property Value')
+    print('Apartment Number')
+    print('Vehicle Make')
+    print('Vehicle Number')
+    print('Vehicle Plates')
+    print('Email\n')
+    print('Please enter the required number of fields and re-run the script. :)\n')
+    
+def showData():
+    print("++++++Summary of variables++++++")
+    print("propName => " + propName)
+    print("propRadioVal => " + propRadioVal)
+    print("aptNum => " + aptNum)
+    print("vehMake => " + vehMake)
+    print("vehModl => " + vehModl)
+    print("vehPlts => " + vehPlts)
+    print("profEmail => " + profEmail)
+    print("++++++++++++++++++++++++++++++++")
 
 runProfile()
