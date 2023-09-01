@@ -8,6 +8,7 @@ global REG2PARK_URL
 REG2PARK_URL = "https://www.register2park.com/register"
 
 
+
 @click.command()
 @click.option('--profile', prompt='Which profile would you like to use?', default='default',
               help='select file inside of profile dir')
@@ -18,20 +19,19 @@ def runProfile(profile):
     click.echo(f"you are loading profile: {profile} \n")
     profile_data = readProfile(profile)
 
-    if len(profile_data) != 7:
+    if len(profile_data) != 3:
         usageMsg(profile_data)
         exit()
     else:
-
         #Set Profile data and display
         setData(profile_data)
         showData()
 
         # Setup webdriver on Chrome
         driver = setUpWebDriver()
+
         # Open driver on base register URL
         driver.get(REG2PARK_URL)
-
         # Auto enter property based on the profile you loaded, then submits to next page.
         populatePropertyForm(driver)
 
@@ -41,6 +41,7 @@ def runProfile(profile):
         # Now click the Visitor Parking Button to continue
         clickVisitorParkingBtn(driver)
 
+
         # Now declare all form fields and send keys
         fillDetailsForm(driver)
 
@@ -48,5 +49,6 @@ def runProfile(profile):
         # Reassign PREVENT_SUBMIT's value to False in order to submit the form.
         if not PREVENT_SUBMIT:
             submitForm(driver)
+
 
 runProfile()
