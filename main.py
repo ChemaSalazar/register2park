@@ -6,6 +6,9 @@ from selenium.webdriver.common.by import By
 global PREVENT_SUBMIT
 PREVENT_SUBMIT = True
 
+global REG2PARK_URL
+REG2PARK_URL = "https://www.register2park.com/register"
+
 
 @click.command()
 @click.option('--profile', prompt='Which profile would you like to use?', default='default',
@@ -28,12 +31,9 @@ def runProfile(profile):
 
 
         # Setup webdriver on Chrome
-        options = webdriver.ChromeOptions()
-        # Prevent window from closing once instantiated.
-        options.add_experimental_option("detach", True)
-        driver = webdriver.Chrome(options=options)
+        driver = setUpWebDriver()
         # Open driver on base register URL
-        driver.get("https://www.register2park.com/register")
+        driver.get(REG2PARK_URL)
 
         # Auto enter property based on the profile you loaded, then submits to next page.
         element = driver.find_element(By.ID, "propertyName")
@@ -137,5 +137,12 @@ def showData():
     print("vehPlts => " + vehPlts)
     print("profEmail => " + profEmail)
     print("++++++++++++++++++++++++++++++++")
+
+
+def setUpWebDriver():
+    options = webdriver.ChromeOptions()
+    # Prevent window from closing once instantiated.
+    options.add_experimental_option("detach", True)
+    return webdriver.Chrome(options=options)
 
 runProfile()
