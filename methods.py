@@ -7,9 +7,9 @@ from selenium.webdriver.common.by import By
 load_dotenv()
 
 def readProfile(profile):
-    file1 = open("profiles/" + profile + ".txt", "r")
-    profile_data = file1.readlines()
-    file1.close()
+    prof_file = open(profile + ".txt", "r")
+    profile_data = prof_file.readlines()
+    prof_file.close()
     return profile_data
 
 def setData(profile_data):
@@ -92,7 +92,7 @@ def submitForm(driver):
     time.sleep(2)
     submissionBtn = driver.find_element(By.ID, "vehicleInformation")
     submissionBtn.click()
-    time.sleep(3)
+    time.sleep(5)
     emailConfirmModalBtn = driver.find_element(By.ID, "email-confirmation")
     emailConfirmModalBtn.click()
     time.sleep(2)
