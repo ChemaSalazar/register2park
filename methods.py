@@ -92,7 +92,7 @@ def submitForm(driver):
     time.sleep(2)
     submissionBtn = driver.find_element(By.ID, "vehicleInformation")
     submissionBtn.click()
-    time.sleep(5)
+    time.sleep(10)
     emailConfirmModalBtn = driver.find_element(By.ID, "email-confirmation")
     emailConfirmModalBtn.click()
     time.sleep(2)
